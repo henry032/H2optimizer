@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "420611869086",
+    "project_id": "h2optimizer-852ab",
+    "storage_bucket": "h2optimizer-852ab.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420611869086:android:b5195c999f0264cb4fae8f",
+        "android_client_info": {
+          "package_name": "com.example.h2optimizer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtAQLYF_ubENGuBWmrWD1JtH3SKOj8g3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
