@@ -11,6 +11,15 @@ void main() async {
   runApp(const H2OOptimizerApp());
 }
 
+
+
+
+
+
+
+
+
+
 //Clase que lleva encima todo el codigo
 class H2OOptimizerApp extends StatelessWidget {
   const H2OOptimizerApp({super.key});
@@ -28,6 +37,16 @@ class H2OOptimizerApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 //Esta es la definicion que hace que salga el logo al principio
 class SplashScreen extends StatefulWidget {
@@ -70,6 +89,16 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 /*Aqui están los datos mi login mal hecho (Lo podes borrar para hacerlo de nuevo)*/
 class UserData {
@@ -163,6 +192,15 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
+
+
+
+
+
+
+
+
+
 //Aqui está el cambiar contraseña(Esta wea la vamos a cambiar despues)
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
@@ -245,6 +283,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Definicion de la clase del perfil
 class ProfileScreen extends StatefulWidget {
@@ -350,6 +400,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
+
+
+
+
+
+
+
+
+
 class ConsumptionHistoryScreen extends StatelessWidget {
   const ConsumptionHistoryScreen({super.key});
 
@@ -418,6 +477,16 @@ class ConsumptionHistoryScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -491,6 +560,15 @@ class NotificationsScreen extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -556,6 +634,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class AccountSettingsScreen extends StatelessWidget {
   const AccountSettingsScreen({super.key});
 
@@ -601,6 +693,15 @@ class AccountSettingsScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
 
 class ChangeUsernameScreen extends StatefulWidget {
   const ChangeUsernameScreen({super.key});
@@ -669,6 +770,14 @@ class _ChangeUsernameScreenState extends State<ChangeUsernameScreen> {
     );
   }
 }
+
+
+
+
+
+
+
+
 
 // Pantallas de Estadísticas
 class ETongueScreen extends StatelessWidget {
@@ -761,6 +870,14 @@ class ETongueScreen extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
+
 class TemperatureScreen extends StatelessWidget {
   const TemperatureScreen({super.key});
 
@@ -850,6 +967,13 @@ class TemperatureScreen extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
 class TurbidityScreen extends StatelessWidget {
   const TurbidityScreen({super.key});
 
@@ -925,6 +1049,14 @@ class TurbidityScreen extends StatelessWidget {
   }
 }
 
+
+
+
+
+
+
+
+
 class ElectrochemicalScreen extends StatelessWidget {
   const ElectrochemicalScreen({super.key});
 
@@ -999,6 +1131,12 @@ class ElectrochemicalScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
 
 class _StatisticsContent extends StatefulWidget {
   const _StatisticsContent({Key? key}) : super(key: key);
@@ -1078,6 +1216,11 @@ class _StatisticsContentState extends State<_StatisticsContent> {
     );
   }
 }
+
+
+
+
+
 
 class _HomeContent extends StatelessWidget {
   const _HomeContent({Key? key}) : super(key: key);
