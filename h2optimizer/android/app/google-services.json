@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "420611869086",
-    "project_id": "h2optimizer-852ab",
-    "storage_bucket": "h2optimizer-852ab.firebasestorage.app"
+    "project_number": "1001100317167",
+    "project_id": "h2optimizer-c5757",
+    "storage_bucket": "h2optimizer-c5757.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:420611869086:android:b5195c999f0264cb4fae8f",
+        "mobilesdk_app_id": "1:1001100317167:android:4899fe910cf6439ce7a61a",
         "android_client_info": {
           "package_name": "com.example.h2optimizer"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1001100317167-jcg6pligfpoac3j64kl98s0gm0hojius.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBtAQLYF_ubENGuBWmrWD1JtH3SKOj8g3I"
+          "current_key": "AIzaSyCEmpq-FHWESah3Mlcc4s3d5725k45wsEg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001100317167-jcg6pligfpoac3j64kl98s0gm0hojius.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
