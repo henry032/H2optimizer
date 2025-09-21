@@ -8,7 +8,8 @@ class ElectrochemicalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sensor Electroquímicos'),
+        centerTitle: true,
+        title: const Text('Datos', style: TextStyle(fontWeight: FontWeight.bold),)
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -17,6 +18,16 @@ class ElectrochemicalScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Sección de la imagen del sensor
+              Center(
+                child: Column(
+                  children: [
+                    const Text('Conductividad',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+
               Center(
                 child: Column(
                   children: [

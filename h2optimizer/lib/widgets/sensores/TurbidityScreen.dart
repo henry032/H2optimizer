@@ -7,7 +7,8 @@ class TurbidityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sensor Turbidez'),
+        centerTitle: true,
+        title: const Text('Datos',style: TextStyle(fontWeight: FontWeight.bold),),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -15,7 +16,17 @@ class TurbidityScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Sección de la imagen del sensor
+              
+              Center(
+                child: Column(
+                  children: [
+                    const Text('Turbidez',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+
               Center(
                 child: Column(
                   children: [
@@ -41,7 +52,7 @@ class TurbidityScreen extends StatelessWidget {
                     width: 16,
                     height: 16,
                     decoration: const BoxDecoration(
-                      color: Color(0xFF63B9E9), // Color azul claro
+                      color: Colors.orange, // Color azul claro
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -58,11 +69,11 @@ class TurbidityScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Text(
-                    'Intensidad',
+                    'Clasificación',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   const Text(
-                    '3,2 AU',
+                    'Aceptable',
                     style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 ],

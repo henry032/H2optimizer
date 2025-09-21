@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'LoginScreen.dart';
 import 'package:h2optimizer/widgets/perfil/AccountSettingsScreen.dart';
 import 'package:h2optimizer/widgets/perfil/NotificationsScreen.dart';
 import 'package:h2optimizer/widgets/perfil/ConsumptionHistoryScreen.dart';
 import 'package:h2optimizer/widgets/perfil/UserData.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -12,14 +12,9 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-//Aqui se sostiene el perfil de la persona (Le vamos a añadir mas cosas)
-class _ProfileScreenState extends State<ProfileScreen> {
-  // Lógica para cerrar sesión
-  void _logout() {
-    // Navega de regreso a la pantalla de inicio de sesión y reemplaza la ruta
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
-    );
+class _ProfileScreenState extends State<ProfileScreen>{
+  void _logout() async{
+    await FirebaseAuth.instance.signOut();
   }
 
   @override
@@ -85,7 +80,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
             ),
             const Divider(),
-            // Botón de cerrar sesión
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -98,7 +92,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text('Cerrar Sesión'),
+                child: const Text('Cerrar Sesión', style: TextStyle(fontSize: 18, color: Colors.white,))
               ),
             ),
           ],

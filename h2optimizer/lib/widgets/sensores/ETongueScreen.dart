@@ -7,7 +7,8 @@ class ETongueScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sensor E-tounge'),
+        centerTitle: true,
+        title: const Text('Datos', style: TextStyle(fontWeight: FontWeight.bold),),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -19,10 +20,19 @@ class ETongueScreen extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
+                    const Text('Nivel de PH', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+
+              Center(
+                child: Column(
+                  children: [
                     // Imagen del sensor. Por ahora, un placeholder.
                     // Aquí puedes usar un widget Image.asset o un SVG
                     Image.asset(
-                      'assets/Etounge_logo.jpg',
+                      'assets/Ph.jpg',
                       height: 200,
                     ),
                     const SizedBox(height: 16),
@@ -32,7 +42,7 @@ class ETongueScreen extends StatelessWidget {
               const SizedBox(height: 20),
               // Sección de información del sabor
               const Text(
-                'Sabor detectado',
+                'PH detectado',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),

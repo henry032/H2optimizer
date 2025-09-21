@@ -1,5 +1,6 @@
 // Archivo: main.dart
-
+import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:h2optimizer/pages/HomeScreen.dart';
 import 'package:h2optimizer/pages/LoginScreen.dart';
@@ -11,7 +12,9 @@ import 'package:h2optimizer/widgets/perfil/ConsumptionHistoryScreen.dart';
 import 'package:h2optimizer/widgets/perfil/NotificationsScreen.dart';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const H2OOptimizerApp());
   
 }
@@ -19,22 +22,19 @@ void main() {
 class H2OOptimizerApp extends StatelessWidget {
   const H2OOptimizerApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // La ruta inicial de la aplicación.
-      initialRoute: '/',
-      // Un mapa que define las rutas con nombre para cada pantalla.
+    return GetMaterialApp(
+      home: SplashScreen(),
       routes: {
-        '/': (context) => const SplashScreen(),
-        '/login': (context) => const LoginScreen(),
-        '/home': (context) => const HomeScreen(),
-        '/profile': (context) => const ProfileScreen(),
-        '/statistics': (context) => const StatisticsContent(),
-        '/account_settings': (context) => const AccountSettingsScreen(),
-        '/consumption_history': (context) => const ConsumptionHistoryScreen(),
-        '/notifications': (context) => const NotificationsScreen(),
+        '': (context) => const SplashScreen(),
+        'login': (context) => const LoginScreen(),
+        'home': (context) => const HomeScreen(),
+        'profile': (context) => const ProfileScreen(),
+        'statistics': (context) => const StatisticsContent(),
+        'account_settings': (context) => const AccountSettingsScreen(),
+        'consumption_history': (context) => const ConsumptionHistoryScreen(),
+        'notifications': (context) => const NotificationsScreen(),
       },
       debugShowCheckedModeBanner: false
     );

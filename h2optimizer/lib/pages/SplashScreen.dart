@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
+import 'package:h2optimizer/pages/wrapper.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,25 +17,21 @@ class _SplashScreenState extends State<SplashScreen> {
     // Simula una pantalla de carga por 3 segundos
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const Wrapper()),
       );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Icono del logo, puedes reemplazarlo con una imagen
-            Icon(Icons.waves, size: 100, color: Colors.blue),
-            SizedBox(height: 20),
-            Text(
-              'H2O Optimizer',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+            Image.asset("assets/appLogo.png"),
+            const SizedBox(height: 0),
           ],
         ),
       ),

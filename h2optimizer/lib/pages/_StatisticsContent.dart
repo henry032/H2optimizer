@@ -21,61 +21,73 @@ class _StatisticsContentState extends State<StatisticsContent> {
           children: <Widget>[
             SizedBox(
               // Widget para fijar el tamaño
-              width: 300, // Ancho deseado
-              height: 150, // Alto deseado
+              width: 325, // Ancho deseado
+              height: 70, // Alto deseado
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Color de fondo azul
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) => const ETongueScreen()),
                   );
                 },
-                child: const Text('E-tounge'),
+                child: const Text('PH', style: TextStyle(color: Colors.white),),
               ),
             ),
             const SizedBox(height: 16),
             SizedBox(
               // Widget para fijar el tamaño
-              width: 300,
-              height: 150,
+              width: 325,
+              height: 70,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Color de fondo azul
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) => const TemperatureScreen()),
                   );
                 },
-                child: const Text('Temperatura'),
+                child: const Text('ORP-Contaminación', style: TextStyle(color: Colors.white),),
               ),
             ),
             const SizedBox(height: 16),
             SizedBox(
               // Widget para fijar el tamaño
-              width: 300,
-              height: 150,
+              width: 325,
+              height: 70,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Color de fondo azul
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) => const TurbidityScreen()),
                   );
                 },
-                child: const Text('Turbidez'),
+                child: const Text('Turbidez', style: TextStyle(color: Colors.white),),
               ),
             ),
             const SizedBox(height: 16),
             SizedBox(
               // Widget para fijar el tamaño
-              width: 300,
-              height: 150,
+              width: 325,
+              height: 70,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, // Color de fondo azul
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (context) => const ElectrochemicalScreen()),
                   );
                 },
-                child: const Text('Electroquímicos'),
+                child: const Text('Conductividad', style: TextStyle(color: Colors.white),),
               ),
             ),
           ],

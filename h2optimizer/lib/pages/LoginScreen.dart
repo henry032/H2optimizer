@@ -1,83 +1,155 @@
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
-import 'package:h2optimizer/widgets/perfil/UserData.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:h2optimizer/pages/SignupScreen.dart';
 
 //import 'package:h2optimizer/main.dart';
 
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key}); 
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 //Aqui está el codigo para el login (Borrable)
 class _LoginScreenState extends State<LoginScreen> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  void _login() {
-    final userData = UserData();
-
-    if (_usernameController.text == userData.username &&
-        _passwordController.text == userData.password) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
-      );
-    } else {
+  
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  
+  signIn() async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email.text,
+      password: password.text,
+    );
+    }catch (e){
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Credenciales incorrectas. Inténtalo de nuevo.'),
-        ),
+        SnackBar(content: Text('Error al iniciar sesión: $e')),
       );
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Inicio de Sesión'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // Campo de texto para el usuario
-            TextField(
-              controller: _usernameController,
-              decoration: const InputDecoration(
-                labelText: 'Usuario',
-                border: OutlineInputBorder(),
-              ),
+      body: Stack(
+        children: [
+          // Imagen de olas en la parte inferior
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Image.asset(
+              "assets/olas.png", // Cambia la ruta si tu imagen tiene otro nombre o ubicación
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.cover,
             ),
-            const SizedBox(height: 16),
-            // Campo de texto para la contraseña
-            TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Contraseña',
-                border: OutlineInputBorder(),
-              ),
-              obscureText: true, // Oculta la contraseña
+          ),
+          // Contenido principal centrado
+          Center(
+            child: Column( 
+              crossAxisAlignment: CrossAxisAlignment.center, // Centra horizontalmente
+              children: [
+                Image.asset(
+                  "assets/appLogo.png",
+                  width: 200,
+                  height: 300,
+                ),
+                SizedBox(
+                  width: 280,
+                  child: TextField(
+                    controller: email,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    decoration: InputDecoration(
+                      hintText: "Correo electrónico",
+                      contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 280,
+                  child: TextField(
+                    controller: password,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    decoration: InputDecoration(
+                      hintText: "Contraseña",
+                      contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 32),
+                SizedBox(
+                  width: 230,   // Ancho deseado
+                  height: 55,   // Alto deseado
+                  child: ElevatedButton(
+                    onPressed: signIn,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 13, 47, 170), // Color de fondo azul claro
+                      foregroundColor: Colors.white, // Color del texto blanco
+                      textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30), 
+                      ),
+                    ),
+                    child: Text("Iniciar sesión"),
+                  ),
+                ),
+
+                SizedBox(height: 16), 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("¿Nuevo usuario? "),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignupScreen()),
+                        );
+                      },
+                      child: Text(
+                        "Registrarse",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 13, 47, 170),
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 24),
+                  const SizedBox(
+                    width: 280, // Ancho consistente con los campos de texto
+                    child: Row(
+                      children: const [
+                        Expanded(
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            'O',
+                            style: TextStyle(color: Colors.grey),
+                          ),
+                        ),
+                        Expanded(
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+              ],
             ),
-            const SizedBox(height: 16),
-            // Botón de inicio de sesión
-            ElevatedButton(
-              onPressed: _login,
-              child: const Text('Iniciar Sesión'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
