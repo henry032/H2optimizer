@@ -61,16 +61,16 @@ class _HomeScreenState extends State<HomeScreen> {
             _widgetOptions.elementAt(_selectedIndex),
 
             // CAPA 2: La ola en el fondo
-            // Positioned(
-            //   bottom: 0,
-            //   left: 0,
-            //   right: 0,
-            //   child: Image.asset(
-            //     'assets/olas.png',
-            //     fit: BoxFit.fill,
-            //     height: 250,
-            //   ),
-            // ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Image.asset(
+                'assets/olas.png',
+                fit: BoxFit.fill,
+                height: 250,
+              ),
+            ),
 
             // CAPA 3: La barra de navegación flotante
             Align(
