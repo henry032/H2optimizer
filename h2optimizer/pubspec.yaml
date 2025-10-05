@@ -19,6 +19,8 @@ dependencies:
   firebase_auth: ^4.15.2
   get: ^4.6.6
   http: ^1.2.1
+  provider: ^6.1.5+1
+  flutter_bluetooth_classic_serial: ^1.0.3
 
 dev_dependencies:
   flutter_test:

@@ -2,15 +2,15 @@
 
 A new Flutter project.
 
-## Getting Started
+## paquetes a instalar
 
-This project is a starting point for a Flutter application.
+abrir una terminal en la carpeta principal del proyecto e ingresar los siguientes comandos:
 
-A few resources to get you started if this is your first Flutter project:
+- flutter pub add flutter_bluetooth_classic_serial
+- flutter pub add provider
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Con esto instalaremos en nuestra app los paquetes de provider y flutter bluetooth classic serial
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 2 Configurar permisos de bluetooth en la app
+android>app>src>main>AndroidManifest.xml
+

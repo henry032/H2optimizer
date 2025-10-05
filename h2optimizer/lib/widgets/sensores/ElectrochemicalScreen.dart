@@ -1,4 +1,4 @@
-
+import 'sensor_data_model.dart';
 import 'package:flutter/material.dart';
 
 class ElectrochemicalScreen extends StatelessWidget {
@@ -8,9 +8,11 @@ class ElectrochemicalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Datos', style: TextStyle(fontWeight: FontWeight.bold),)
-      ),
+          centerTitle: true,
+          title: const Text(
+            'Datos',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -21,8 +23,11 @@ class ElectrochemicalScreen extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
-                    const Text('Conductividad',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    const Text(
+                      'Conductividad',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(height: 16),
                   ],
                 ),

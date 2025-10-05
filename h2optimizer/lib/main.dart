@@ -10,13 +10,12 @@ import 'package:h2optimizer/pages/_StatisticsContent.dart';
 import 'package:h2optimizer/widgets/perfil/AccountSettingsScreen.dart';
 import 'package:h2optimizer/widgets/perfil/ConsumptionHistoryScreen.dart';
 import 'package:h2optimizer/widgets/perfil/NotificationsScreen.dart';
+import 'package:h2optimizer/widgets/sensores/sensor_data_model.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const H2OOptimizerApp());
-  
 }
 
 class H2OOptimizerApp extends StatelessWidget {
@@ -25,18 +24,25 @@ class H2OOptimizerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: SplashScreen(),
-      routes: {
-        '': (context) => const SplashScreen(),
-        'login': (context) => const LoginScreen(),
-        'home': (context) => const HomeScreen(),
-        'profile': (context) => const ProfileScreen(),
-        'statistics': (context) => const StatisticsContent(),
-        'account_settings': (context) => const AccountSettingsScreen(),
-        'consumption_history': (context) => const ConsumptionHistoryScreen(),
-        'notifications': (context) => const NotificationsScreen(),
-      },
-      debugShowCheckedModeBanner: false
-    );
+        home: SplashScreen(),
+        routes: {
+          '': (context) => const SplashScreen(),
+          'login': (context) => const LoginScreen(),
+          'home': (context) => const HomeScreen(),
+          'profile': (context) => const ProfileScreen(),
+          'statistics': (context) => StatisticsContent(
+                data: SensorData(
+                    ph: 0.0,
+                    flowRate: 0.0,
+                    volume: 0.0,
+                    tds: 0.0,
+                    turbidity: 0.0,
+                    orp: 0.0),
+              ),
+          'account_settings': (context) => const AccountSettingsScreen(),
+          'consumption_history': (context) => const ConsumptionHistoryScreen(),
+          'notifications': (context) => const NotificationsScreen(),
+        },
+        debugShowCheckedModeBanner: false);
   }
 }

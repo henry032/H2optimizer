@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'sensor_data_model.dart';
 
 class TurbidityScreen extends StatelessWidget {
-  const TurbidityScreen({super.key});
+  final SensorData data;
+
+  const TurbidityScreen({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Datos',style: TextStyle(fontWeight: FontWeight.bold),),
+        title: const Text(
+          'Datos',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -16,12 +22,14 @@ class TurbidityScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               Center(
                 child: Column(
                   children: [
-                    const Text('Turbidez',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
+                    const Text(
+                      'Turbidez',
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(height: 16),
                   ],
                 ),
@@ -57,8 +65,8 @@ class TurbidityScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  const Text(
-                    '5,8 NTU',
+                  Text(
+                    data.turbidity.toStringAsFixed(2),
                     style: TextStyle(fontSize: 18),
                   ),
                 ],

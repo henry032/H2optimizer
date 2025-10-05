@@ -3,6 +3,7 @@ import 'package:h2optimizer/widgets/perfil/AccountSettingsScreen.dart';
 import 'package:h2optimizer/widgets/perfil/NotificationsScreen.dart';
 import 'package:h2optimizer/widgets/perfil/ConsumptionHistoryScreen.dart';
 import 'package:h2optimizer/widgets/perfil/UserData.dart';
+import 'package:h2optimizer/widgets/perfil/BluetoothConnectionScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -12,8 +13,8 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen>{
-  void _logout() async{
+class _ProfileScreenState extends State<ProfileScreen> {
+  void _logout() async {
     await FirebaseAuth.instance.signOut();
   }
 
@@ -80,20 +81,37 @@ class _ProfileScreenState extends State<ProfileScreen>{
               },
             ),
             const Divider(),
+            ListTile(
+              leading: const Icon(Icons.bluetooth),
+              title: const Text('Conexion Bluetooth'),
+              onTap: () async {
+                // Espera a que la pantalla de configuración se cierre.
+                await Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) => const Bluetoothconnectionscreen()),
+                );
+                // Vuelve a construir la pantalla para reflejar los cambios.
+                setState(() {});
+              },
+            ),
+            const Divider(),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ElevatedButton(
-                onPressed: _logout,
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 50),
-                  backgroundColor: Colors.red,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                  onPressed: _logout,
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 50),
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
-                ),
-                child: const Text('Cerrar Sesión', style: TextStyle(fontSize: 18, color: Colors.white,))
-              ),
+                  child: const Text('Cerrar Sesión',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ))),
             ),
           ],
         ),

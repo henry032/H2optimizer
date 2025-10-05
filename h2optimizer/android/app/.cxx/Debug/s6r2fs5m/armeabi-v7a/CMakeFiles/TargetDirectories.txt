@@ -1,0 +1,2 @@
+C:/Users/admin/OneDrive/Escritorio/H2optimizer/h2optimizer/android/app/.cxx/Debug/s6r2fs5m/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/admin/OneDrive/Escritorio/H2optimizer/h2optimizer/android/app/.cxx/Debug/s6r2fs5m/armeabi-v7a/CMakeFiles/rebuild_cache.dir

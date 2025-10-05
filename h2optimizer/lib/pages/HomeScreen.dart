@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '_StatisticsContent.dart';
 import 'ProfileScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../widgets/sensores/sensor_data_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
+class _HomeScreenState extends State<HomeScreen> {
   final user = FirebaseAuth.instance.currentUser;
 
   signout() async {
@@ -22,7 +23,14 @@ class _HomeScreenState extends State<HomeScreen>{
   // Ponemos ProfileScreen en su propia variable para poder usarla en el Stack
   static final List<Widget> _widgetOptions = <Widget>[
     _HomeContent(),
-    StatisticsContent(),
+    StatisticsContent(
+        data: SensorData(
+            ph: 0.0,
+            flowRate: 0.0,
+            volume: 0.0,
+            tds: 0.0,
+            turbidity: 0.0,
+            orp: 0.0)),
     const ProfileScreen(), // Usamos el widget directamente
   ];
 
@@ -53,21 +61,22 @@ class _HomeScreenState extends State<HomeScreen>{
             _widgetOptions.elementAt(_selectedIndex),
 
             // CAPA 2: La ola en el fondo
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Image.asset(
-                'assets/olas.png',
-                fit: BoxFit.fill,
-                height: 250,
-              ),
-            ),
+            // Positioned(
+            //   bottom: 0,
+            //   left: 0,
+            //   right: 0,
+            //   child: Image.asset(
+            //     'assets/olas.png',
+            //     fit: BoxFit.fill,
+            //     height: 250,
+            //   ),
+            // ),
 
             // CAPA 3: La barra de navegación flotante
             Align(
               alignment: Alignment.bottomCenter,
-              child: _buildFloatingNavBar(context, itemWidth), // Usamos un método reutilizable
+              child: _buildFloatingNavBar(
+                  context, itemWidth), // Usamos un método reutilizable
             ),
           ],
         ),
@@ -90,7 +99,8 @@ class _HomeScreenState extends State<HomeScreen>{
           ),
         ),
         body: _widgetOptions.elementAt(_selectedIndex),
-        bottomNavigationBar: _buildFloatingNavBar(context, itemWidth), // Usamos el mismo método
+        bottomNavigationBar:
+            _buildFloatingNavBar(context, itemWidth), // Usamos el mismo método
       );
     }
   }
@@ -147,7 +157,8 @@ class _HomeScreenState extends State<HomeScreen>{
     );
   }
 
-  Widget _buildNavItem(int index, IconData icon, String label, double itemWidth) {
+  Widget _buildNavItem(
+      int index, IconData icon, String label, double itemWidth) {
     return GestureDetector(
       onTap: () => _onItemTapped(index),
       child: Container(
@@ -173,7 +184,6 @@ class _HomeScreenState extends State<HomeScreen>{
     );
   }
 }
-
 
 class _HomeContent extends StatelessWidget {
   const _HomeContent({Key? key}) : super(key: key);
@@ -206,21 +216,22 @@ class _HomeContent extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 40),
                             child: TextField(
-                            decoration: const InputDecoration(
-                              hintText: '9.3m³',
-                              border: InputBorder.none,
+                              decoration: const InputDecoration(
+                                hintText: '9.3m³',
+                                border: InputBorder.none,
+                              ),
+                              style: const TextStyle(
+                                  fontSize: 48, fontWeight: FontWeight.bold),
+                              keyboardType: TextInputType.number,
+                              textAlign: TextAlign.start,
                             ),
-                            style: const TextStyle(
-                                fontSize: 48, fontWeight: FontWeight.bold),
-                            keyboardType: TextInputType.number,
-                            textAlign: TextAlign.start,
                           ),
                         ),
-                      ),
                       ],
                     ),
                     const SizedBox(height: 2),
-                    const Divider(thickness: 1, color: Color.fromARGB(255, 98, 98, 98)),
+                    const Divider(
+                        thickness: 1, color: Color.fromARGB(255, 98, 98, 98)),
                     const SizedBox(height: 2),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -237,9 +248,11 @@ class _HomeContent extends StatelessWidget {
                         const SizedBox(
                           height: 40,
                           child: VerticalDivider(
-                            color: Color.fromARGB(255, 98, 98, 98), // Color del divisor
-                            thickness: 1.5,     // Grosor del divisor
-                            width: 32,          // Espacio horizontal reservado para el divisor
+                            color: Color.fromARGB(
+                                255, 98, 98, 98), // Color del divisor
+                            thickness: 1.5, // Grosor del divisor
+                            width:
+                                32, // Espacio horizontal reservado para el divisor
                           ),
                         ),
                         Expanded(
@@ -272,13 +285,16 @@ class _HomeContent extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text('Consejo del día',
-                              style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold)),
                           const SizedBox(height: 8),
-                          const Divider(thickness: 1, color: Color.fromARGB(255, 98, 98, 98)),
+                          const Divider(
+                              thickness: 1,
+                              color: Color.fromARGB(255, 98, 98, 98)),
                           const SizedBox(height: 8),
                           const Text(
-                              'Cierra el grifo mientras te cepillas los dientes para ahorrar 12 litros de agua',
-                              style: TextStyle(fontWeight: FontWeight.bold), 
+                            'Cierra el grifo mientras te cepillas los dientes para ahorrar 12 litros de agua',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -305,8 +321,13 @@ class _HomeContent extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 8),
-                    const Divider(thickness: 1, color: Color.fromARGB(255, 98, 98, 98),),
-                    _buildAlertItem('Uso elevado de agua detectado',),
+                    const Divider(
+                      thickness: 1,
+                      color: Color.fromARGB(255, 98, 98, 98),
+                    ),
+                    _buildAlertItem(
+                      'Uso elevado de agua detectado',
+                    ),
                     _buildAlertItem('Posible fuga'),
                     _buildAlertItem('Reduce tu consumo'),
                   ],
@@ -327,7 +348,10 @@ class _HomeContent extends StatelessWidget {
         children: [
           const Icon(Icons.warning_amber, color: Colors.black),
           const SizedBox(width: 8),
-          Text(text, style: const TextStyle(fontWeight: FontWeight.bold),),
+          Text(
+            text,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );
